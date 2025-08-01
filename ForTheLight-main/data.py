@@ -4,6 +4,8 @@ print("Loading functions.py")
 
 import shared
 
+
+
 rooms = {
     "cell": {
         "description": "A cold detention cell with dim lights and a locked door to the north.",
@@ -141,6 +143,7 @@ Elissus_Rooms = {
         },
         "choice": "The only way is forward. (Avaliable commands: 'up')",
         "items": ["blunt_knife"],
+        "knife_yes": "Yes",
         "enemy": 
         {
             "name": "Crimson Rat",
@@ -155,7 +158,29 @@ enemy_stats = {
         "Crimson Rat": {
             "health": [15, 20, 20, 20, 25],
             "damage": [5, 5, 5, 5, 10],
-            "drops": ["","","","","Rat Tail"]
+            "drops": ["","","","","Rat Tail"],
         },
     },
 }
+
+player_stats = {
+    "name": "",
+    "health": 100,
+    "max_health": 100,
+    "damage": 0,
+    "defense": 0,
+    "currency": 0,
+    "progress": 0
+}
+
+weapon_stats = {
+    "Blunt Knife": {
+        "Description": "A blade used in the Alignment Wars. It has since fallen into disrepair.",
+        "damage": [8, 8, 8, 8, 16],
+    },
+    "Unyielding Spear": {
+        "Description": "Don't yeild it. The last one who did is not one anymore.",
+        "damage": [15, 15, 15, 30]
+    }
+}
+# main.py

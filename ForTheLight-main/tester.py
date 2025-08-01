@@ -1,8 +1,9 @@
+from colorama import Fore, Style, init
+init(autoreset=True)
 
 from data import Elissus_Rooms 
 import shared
 from functions import directional_choices
-
 
 shared.player = {
         "name": "",
@@ -13,10 +14,6 @@ shared.player = {
         "currency": 0,
         "location": "your_room",
     }
-
-from colorama import init, Fore, Style
-init(autoreset=True)  # Resets colour after each print
-
 
 def start_room():
     starting_room = "your_room"
@@ -74,12 +71,10 @@ def main():
             print(Elissus_Rooms[current_location]["description"])
             command = input(Elissus_Rooms[current_location]["choice"]).lower()
             if command in ['w', 'a', 's', 'd']:
-                print(f"DEBUG: Current location before move = {shared.player['location']}")
                 new_location = directional_choices(command)
                 if new_location:
                     shared.player["location"] = new_location
                     current_location = new_location
-                print(f"DEBUG: Current location after move = {shared.player['location']}")
                
             else:
                 print("Invalid command. Please try again.")

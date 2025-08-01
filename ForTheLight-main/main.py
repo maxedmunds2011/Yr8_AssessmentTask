@@ -1,5 +1,7 @@
 # main.py
 
+
+
 from data import rooms, starting_room
 from functions import directional_choices, show_location, get_command, move, take_item, check_end_game
 
