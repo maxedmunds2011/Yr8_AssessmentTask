@@ -16,7 +16,8 @@ enemy_name = "Crimson Rat"
 enemy_drops = None
 enemy_damage_amount = 0
 player_damage_amount = 0
-heal_amount = 0
+
+
 
 def show_location(room_name, rooms):
     room = rooms[room_name]
@@ -159,8 +160,7 @@ def enemies():
 
   
 
-def heal_player():
-    player_stats["health"] = min(player_stats["max_health"], player_stats["health"] + heal_amount)
+
 
 
 def battle_system():
@@ -171,6 +171,7 @@ def battle_system():
     print("The battle begins!")
     print(f"You encounter a {enemy}!")
     print(f"{enemy_name} has {enemy_health} health.")
+    heal_times = 0
 
     def enemy_take_damage():
         nonlocal enemy_health
@@ -186,7 +187,9 @@ def battle_system():
                 ability = input(f"Type the name of the ability you want to use: ").upper()
                 if ability in abilities:
                     if ability == "Growth":
-                        heal_amount += 15
+                        heal_amount = 15
+                        def heal_player():
+                            player_stats["health"] = min(player_stats["max_health"], player_stats["health"] + heal_amount)
                         heal_player()
                         print(f"Your current health is {player_stats["health"]}")
                 else:
@@ -198,7 +201,11 @@ def battle_system():
                 print(f"Your current weapons are: {weapons}")
                 weapon_choice = input(f"What weapon shall you use? ")
                 if weapon_choice in weapons:
-                    player_damage_amount = random.choice(weapon_stats[weapon_choice]["damage"])
+                    if halved_dmg == True:
+                        player_damage_amount = random.choice(weapon_stats[weapon_choice]["damage"]) / 2
+                        halved_dmg = False
+                    else:
+                        player_damage_amount = random.choice(weapon_stats[weapon_choice]["damage"])
 
                     enemy_take_damage()
                     print (f"You use your {weapon_choice} and deal {player_damage_amount} damage!")
@@ -222,12 +229,21 @@ def battle_system():
 
 
         elif battle_choice == 'h':
+            
+            if heal_times == 0:
+                heal_amount = 0
+                def heal_player():
+                    player_stats["health"] = min(player_stats["max_health"], player_stats["health"] + heal_amount)
                 print("Next turn, your damage will be decreased")
                 halved_dmg = True
                 print("You heal 30HP.")
-                heal_amount += 30
+                heal_amount = 30
                 heal_player()
                 print(f"Your current health is {player_stats["health"]}")
+                heal_times += 1
+
+            elif heal_times:
+                print ("You've used all heals.")
 
 
         else:
