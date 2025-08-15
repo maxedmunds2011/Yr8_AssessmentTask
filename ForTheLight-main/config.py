@@ -1,0 +1,13 @@
+p_health = 100
+p_max_health = 100
+p_name = ""
+p_progress = 0
+p_damage = 0
+p_defence = 0
+p_currency = 0
+p_location = "your_room"
+enemy = None
+enemy_name = "Crimson Rat"
+enemy_drops = None
+enemy_damage_amount = 0
+player_damage_amount = 0

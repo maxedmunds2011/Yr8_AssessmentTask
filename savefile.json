@@ -1,0 +1,17 @@
+{
+    "p_health": 100,
+    "p_max_health": 100,
+    "p_name": "",
+    "p_progress": 0,
+    "p_damage": 0,
+    "p_defence": 0,
+    "p_currency": 15,
+    "p_location": "Crimson_streets",
+    "items": [
+        "Festival Bouquet"
+    ],
+    "abilities": [],
+    "weapons": [
+        "Blunt Knife"
+    ]
+}
